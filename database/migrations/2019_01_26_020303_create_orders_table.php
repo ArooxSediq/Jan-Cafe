@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('customer_name');
             $table->decimal('total_price', 9, 2);
             $table->string('status')->default("pending");
-            $table->unsignedInteger('order_lines_id')
+            $table->unsignedInteger('order_lines_id');
             $table->boolean('paid');
             $table->boolean('posted');
             $table->timestamps();

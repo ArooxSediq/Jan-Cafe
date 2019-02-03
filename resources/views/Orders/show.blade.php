@@ -7,25 +7,25 @@
 
 <div class="jumbotron">
 	<h1 class="text-info">
-		Our Orders
+		Customer {{ $order->customer_name }}
 	</h1>
 	<hr>
-
-   @foreach($orders as $order)
+		
 		<li>
 
 			<a class="text" href="/Orders/{{ $order->id }}"> 
 
 	    		{{ $order->name }}
+	    		|
+	    		{{ $order->order_line->item_id }}
 	    	</a>
 
 	    	<span>
 
-	    		{{ $order->price }}
+	    		{{-- {{ $order->price }} --}}
 	    	</span>
 		</li>    	
-    @endforeach
-	
+
 </div>
 
 

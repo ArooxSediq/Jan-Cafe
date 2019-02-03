@@ -4,10 +4,10 @@
 
 @section('content')
 
-	<h2>Create new item</h2>
+	<h2>Create new order</h2>
 	<hr>
 
-	<form method="POST" action="/Items">
+	<form method="POST" action="/Orders">
 		
 			@csrf
 

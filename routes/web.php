@@ -11,10 +11,10 @@
 |
 */
 
-// Pages
-Route::get('/','PagesController@home');
-Route::get('/admin','PagesController@admin');
-Route::get('/waiter','PagesController@waiter');
+// // Pages
+// Route::get('/','PagesController@home');
+// Route::get('/admin','PagesController@admin');
+// Route::get('/waiter','PagesController@waiter');
 
 
 //Requests
