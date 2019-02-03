@@ -19,13 +19,13 @@ class PagesController extends Controller
         ]);
     }
 
-    public function waiter()
-    {
-    	return view('waiter');
-    }
+    // public function waiter()
+    // {
+    // 	return view('waiter');
+    // }
 
-    public function admin()
-    {
-    	return view('admin');
-    }
+    // public function admin()
+    // {
+    // 	return view('admin');
+    // }
 }

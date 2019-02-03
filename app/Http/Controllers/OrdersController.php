@@ -44,16 +44,6 @@ class OrdersController extends Controller
             "name" => request('name'),
             "total_price" => request('total_price'),
             "description" => request('description'),
-            "active" => '1'
-
-                $table->increments('id');
-            $table->string('customer_name');
-            $table->decimal('total_price', 9, 2);
-            $table->string('status')->default("pending");
-            $table->unsignedInteger('order_lines_id')
-            $table->boolean('paid');
-            $table->boolean('posted');
-            $table->timestamps();
 
          ]);
          return;
@@ -65,10 +55,6 @@ class OrdersController extends Controller
      * @param  \Apview('welcome')p\Orders  $Orders
      * @return \Illuminate\Http\Response
      */
-    // public function show(Orders $item)
-    // {
-    //     dd($item);
-    // }
 
     public function show($id)
     {
