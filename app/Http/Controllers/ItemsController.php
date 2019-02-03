@@ -14,11 +14,9 @@ class ItemsController extends Controller
      */
     public function index()
     {   
-        $Orders = "no orders currently";
-    
+       
         return view('Items.index')->with([
-            'Items' => Items::all() ,
-            "Orders" => $Orders
+            'Items' => Items::all()
         ]);
     }
 

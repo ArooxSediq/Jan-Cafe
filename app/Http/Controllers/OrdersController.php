@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Orders;
+use App\Items;
+use App\Order_line;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -17,7 +19,7 @@ class OrdersController extends Controller
         // $Orders = "no orders currently";
     
         return view('Orders.index')->with([
-            'Orders' => Orders::all()
+            'orders' => Orders::all()
         ]);
     }
 
@@ -28,7 +30,9 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('Orders.create');
+        return view('Orders.create')->with([
+            'items' => Items::all()
+        ]);
     }
 
     /**

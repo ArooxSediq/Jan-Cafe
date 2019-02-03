@@ -12,12 +12,12 @@
 */
 
 // // Pages
-// Route::get('/','PagesController@home');
+Route::get('/','PagesController@home');
 // Route::get('/admin','PagesController@admin');
 // Route::get('/waiter','PagesController@waiter');
 
 
 //Requests
 
-Route::resource('Items', 'ItemsController');
-Route::resource('Orders', 'OrdersController');
+Route::resource('items', 'ItemsController');
+Route::resource('orders', 'OrdersController');

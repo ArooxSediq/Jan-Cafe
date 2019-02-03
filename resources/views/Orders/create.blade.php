@@ -17,21 +17,32 @@
 		</div>
 
 		<br>
-
+	
 		<div class="input-group">
-		  <span class="input-group-addon" >Price</span>
-		  <input type="number" name="price" class="form-control" placeholder="eg: 3500 " >
+		  <span class="input-group-addon" >Item</span>
+		  <select name="item_id" class="form-control">
+		  	@foreach($items as $item)
+		  		<option value="{{ $item->id }}">{{	$item->name	}}</option>
+		  	@endforeach
+		  </select>
 		</div>
 
 		<br>
 
 		<div class="input-group">
-			<span class="input-group-addon" >Description</span>
-			<textarea name="description" class="form-control"></textarea>
+		  <span class="input-group-addon" >Quantity</span>
+		  <input type="number" name="qtt" class="form-control" >
+		</div>
+
+		<br>
+
+		<div class="input-group">
+			<span class="input-group-addon" >Note</span>
+			<textarea name="note" class="form-control"></textarea>
 		</div>
 		
 		<br>
 
-		<input type="submit" class="btn btn-md btn-block btn-info" name="submit" value="Create">
+		<input type="submit" class="btn btn-md btn-block btn-info" name="submit" value="Order">
 	</form>
 @endsection
