@@ -11,17 +11,21 @@
 	</h1>
 	<hr>
 
-   @foreach($Items as $item)
+   @foreach($items as $item)
 		<li>
 
-			<a class="text" href="/Items/{{ $item->id }}"> 
+			<a class="text" href="/items/{{ $item->id }}"> 
 
 	    		{{ $item->name }}
 	    	</a>
-
+	    	|
 	    	<span>
 
 	    		{{ $item->price }}
+	    	</span>
+	    	|
+	    	<span>
+	    		{{ $item->description }}
 	    	</span>
 		</li>    	
     @endforeach

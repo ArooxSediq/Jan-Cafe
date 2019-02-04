@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('customer_name')->default('Unkown');
-            $table->decimal('total_price', 9, 2)->default('0');
+            $table->decimal('price', 9, 2)->default('0');
             $table->string('status')->default("pending");
             $table->unsignedInteger('order_lines_id')->default('1');
             $table->boolean('paid')->default('0');

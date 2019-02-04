@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Items;
+use App\Item;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -15,8 +15,8 @@ class ItemsController extends Controller
     public function index()
     {   
        
-        return view('Items.index')->with([
-            'Items' => Items::all()
+        return view('items.index')->with([
+            'items' => Item::all()
         ]);
     }
 
@@ -27,7 +27,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        return view('Items.create');
+        return view('items.create');
     }
 
     /**
@@ -38,7 +38,7 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-         Items::create([
+         Item::create([
 
             "name" => request('name'),
             "price" => request('price'),
@@ -53,26 +53,26 @@ class ItemsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Apview('welcome')p\Items  $items
+     * @param  \Apview('welcome')p\Item  $Item
      * @return \Illuminate\Http\Response
      */
-    // public function show(Items $item)
+    // public function show(Item $item)
     // {
     //     dd($item);
     // }
 
     public function show($id)
     {
-        return Items::findOrFail($id);
+        return Item::findOrFail($id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Items  $items
+     * @param  \App\Item  $Item
      * @return \Illuminate\Http\Response
      */
-    public function edit(Items $items)
+    public function edit(Item $Item)
     {
         return view('items.edit');        
     }
@@ -81,10 +81,10 @@ class ItemsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Items  $items
+     * @param  \App\Item  $Item
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Items $items)
+    public function update(Request $request, Item $Item)
     {
         //
     }
@@ -92,10 +92,10 @@ class ItemsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Items  $items
+     * @param  \App\Item  $Item
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Items $items)
+    public function destroy(Item $Item)
     {
         //
     }

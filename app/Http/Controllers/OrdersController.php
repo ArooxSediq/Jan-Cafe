@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Orders;
-use App\Items;
+use App\Order;
+use App\Item;
 use App\Order_line;
 use Illuminate\Http\Request;
 
@@ -16,9 +16,9 @@ class OrdersController extends Controller
      */
     public function index()
     {   
-        // $data = Orders::all();
-        return view('Orders.index')->with([
-            'orders' => Orders::all()
+        // $data = Order::all();
+        return view('orders.index')->with([
+            'orders' => Order::all()
         ]);
     }
 
@@ -29,8 +29,8 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('Orders.create')->with([
-            'items' => Items::all()
+        return view('orders.create')->with([
+            'items' => Item::all()
         ]);
     }
 
@@ -48,7 +48,7 @@ class OrdersController extends Controller
 
 
         //Finding the requested item for the order 
-        $item = Items::findOrFail( request('item_id') );
+        $item = Item::findOrFail( request('item_id') );
         
         //Getting the Quanitiy & customer's name
         $qty = request('qty');
@@ -57,7 +57,7 @@ class OrdersController extends Controller
        
         // Checks if the order is already paid for or not
         if(request('paid') == null) $paid=0;
-        else $paid = request('paid');
+        else $paid = 1;
 
         //getting the first Order line object (if any)
         $first = Order_line::orderBy('id', 'desc')->first();
@@ -67,23 +67,23 @@ class OrdersController extends Controller
         else $order_line = $first->id + 1 ; 
 
         //Inserting the new order to the database
-        Orders::create([
+        Order::create([
             "customer_name" => $customer_name,
-            "total_price" => $total,
+            "price" => $item->price,
             "order_lines_id" => $order_line,
             "paid" => $paid
          ]);
 
         //Retrevieng the last order for the order ID
-        $order_id = Orders::orderBy('id', 'desc')->first()->id;
+        $order_id = Order::orderBy('id', 'desc')->first()->id;
 
         //Inserting the orderLine
         Order_line::create([
             'id' => $order_line,
             'order_id' => $order_id,
             'item_id' => $item->id,
-            'price' => $total
-        
+            'price' => $total,
+            'qty' => $qty
         ]);
 
         // Returning back to the index page
@@ -93,36 +93,36 @@ class OrdersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Apview('welcome')p\Orders  $Orders
+     * @param  \Apview('welcome')p\Order  $Order
      * @return \Illuminate\Http\Response
      */
 
     public function show($id)
     {
-        return view('Orders.show')->with([
-             'order' => Orders::findOrFail($id) 
+        return view('orders.show')->with([
+             'order' => Order::findOrFail($id) 
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Orders  $Orders
+     * @param  \App\Order  $Order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orders $Orders)
+    public function edit(Order $Order)
     {
-        return view('Orders.edit');        
+        return view('orders.edit');        
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Orders  $Orders
+     * @param  \App\Order  $Order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orders $Orders)
+    public function update(Request $request, Order $Order)
     {
         //
     }
@@ -130,10 +130,10 @@ class OrdersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Orders  $Orders
+     * @param  \App\Order  $Order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orders $Orders)
+    public function destroy(Order $Order)
     {
         //
     }

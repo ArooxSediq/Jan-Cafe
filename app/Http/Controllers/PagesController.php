@@ -4,18 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Items;
-use App\Orders;
+use App\Item;
+use App\Order;
 
 class PagesController extends Controller
 {
     public function home()
     {
-        $orders = Orders::all();
-        $items  = Items::all();
-    	return view('welcome')->with([
-            'items' => $items,
-            'orders' => $orders
+        $Order = Order::all();
+        $Item  = Item::all();
+    	
+        return view('welcome')->with([
+            'items' => $Item,
+            'orders' => $Order
         ]);
     }
 
