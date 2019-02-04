@@ -38,7 +38,6 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(request());
          Items::create([
 
             "name" => request('name'),
@@ -47,8 +46,8 @@ class ItemsController extends Controller
             "active" => '1'
 
          ]);
-         
-         // return;
+
+        return redirect('items');
     }
 
     /**

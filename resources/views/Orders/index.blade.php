@@ -22,6 +22,9 @@
 		</li>    	
     @endforeach
 	
+    <hr>
+    <a href="orders/create" class="btn btn-info btn-md">Make a new order</a>
+	
 </div>
 
 

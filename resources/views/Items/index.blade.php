@@ -25,6 +25,10 @@
 	    	</span>
 		</li>    	
     @endforeach
+
+
+    <hr>
+    <a href="items/create" class="btn btn-md btn-info">Create a new item</a>
 	
 </div>
 

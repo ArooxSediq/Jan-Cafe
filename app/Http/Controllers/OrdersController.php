@@ -35,29 +35,38 @@ class OrdersController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * Store a newly created order in order's table.
+     * @author Arukh Sediq
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        
+        /*  Note: please try improving the code below if possible for production */
+        //------------------------------------------------------------------------//
+
+
+        //Finding the requested item for the order 
         $item = Items::findOrFail( request('item_id') );
         
+        //Getting the Quanitiy & customer's name
         $qty = request('qty');
         $customer_name = request('customer_name');
-
-        $total = $item->price * $qty;
+        $total = $item->price * $qty;                              //Calculating the total
        
-         
+        // Checks if the order is already paid for or not
         if(request('paid') == null) $paid=0;
         else $paid = request('paid');
 
+        //getting the first Order line object (if any)
         $first = Order_line::orderBy('id', 'desc')->first();
         
+        //Checking whether our table is empty or has record 
         if($first == null)  $order_line = 1;
-        else $order_line = $first->id + 1 ;
+        else $order_line = $first->id + 1 ; 
 
+        //Inserting the new order to the database
         Orders::create([
             "customer_name" => $customer_name,
             "total_price" => $total,
@@ -65,18 +74,20 @@ class OrdersController extends Controller
             "paid" => $paid
          ]);
 
+        //Retrevieng the last order for the order ID
         $order_id = Orders::orderBy('id', 'desc')->first()->id;
 
-       Order_line::create([
+        //Inserting the orderLine
+        Order_line::create([
             'id' => $order_line,
             'order_id' => $order_id,
-            'item_id' => $$item->id,
+            'item_id' => $item->id,
             'price' => $total
+        
         ]);
 
-        
-
-         return;
+        // Returning back to the index page
+        return redirect('orders');
     }
 
     /**
