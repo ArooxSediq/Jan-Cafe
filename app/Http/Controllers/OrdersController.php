@@ -16,8 +16,7 @@ class OrdersController extends Controller
      */
     public function index()
     {   
-        // $Orders = "no orders currently";
-    
+        // $data = Orders::all();
         return view('Orders.index')->with([
             'orders' => Orders::all()
         ]);
@@ -45,11 +44,15 @@ class OrdersController extends Controller
     {
          Orders::create([
 
-            "name" => request('name'),
+            "customer_name" => request('customer_name'),
             "total_price" => request('total_price'),
-            "description" => request('description'),
+            "description" => request('note'),
+
 
          ]);
+         $qtt = request('qtt');
+         $order_lines_id;
+
          return;
     }
 
@@ -62,7 +65,9 @@ class OrdersController extends Controller
 
     public function show($id)
     {
-        return Orders::findOrFail($id);
+        return view('Orders.show')->with([
+             'order' => Orders::findOrFail($id) 
+        ]);
     }
 
     /**

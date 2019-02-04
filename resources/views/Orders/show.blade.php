@@ -7,25 +7,23 @@
 
 <div class="jumbotron">
 	<h1 class="text-info">
-		Customer {{ $order->customer_name }}
+		Invoice View
 	</h1>
 	<hr>
-		
-		<li>
+	<ul class="list-group">
+	  <li class="list-group-item">Customer: {{ $order->customer_name }} </li>
+	  <li class="list-group-item">Total: {{ $order->total_price }} </li>
+	  <li class="list-group-item">Status: {{ $order->status }} </li>
+	  <li class="list-group-item">Paid: {{ $order->paid }} </li>
+	</ul>
 
-			<a class="text" href="/Orders/{{ $order->id }}"> 
-
-	    		{{ $order->name }}
-	    		|
-	    		{{ $order->order_line->item_id }}
-	    	</a>
-
-	    	<span>
-
-	    		{{-- {{ $order->price }} --}}
-	    	</span>
-		</li>    	
-
+	@dd($order->order_line)
+	<ul class="list-group">
+	  <li class="list-group-item">Customer: {{ $order->customer_name }} </li>
+	  <li class="list-group-item">Total: {{ $order->total_price }} </li>
+	  <li class="list-group-item">Status: {{ $order->status }} </li>
+	  <li class="list-group-item">Paid: {{ $order->paid }} </li>
+	</ul>
 </div>
 
 

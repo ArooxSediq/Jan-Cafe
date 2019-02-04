@@ -7,7 +7,7 @@
 	<h2>Create new item</h2>
 	<hr>
 
-	<form method="POST" action="/Items">
+	<form method="POST" action="/items">
 		
 			@csrf
 

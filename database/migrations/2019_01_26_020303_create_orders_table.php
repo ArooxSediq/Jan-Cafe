@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('customer_name');
-            $table->decimal('total_price', 9, 2);
+            $table->string('customer_name')->default('Unkown');
+            $table->decimal('total_price', 9, 2)->default('0');
             $table->string('status')->default("pending");
             $table->unsignedInteger('order_lines_id');
-            $table->boolean('paid');
-            $table->boolean('posted');
+            $table->boolean('paid')->default('0');
+            $table->boolean('posted')->default('1');
             $table->timestamps();
         });
     }

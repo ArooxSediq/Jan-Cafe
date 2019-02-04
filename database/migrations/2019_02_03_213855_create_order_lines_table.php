@@ -17,8 +17,8 @@ class CreateOrderLinesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('item_id');
-            $table->decimal('price');
-            $table->int('qty');
+            $table->decimal('price')->default('0');
+            $table->integer('qty')->default('1');
             $table->timestamps();
         });
     }

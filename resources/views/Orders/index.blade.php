@@ -12,17 +12,13 @@
 	<hr>
 
    @foreach($orders as $order)
+	{{-- @dd($order->order_lines()) --}}
 		<li>
 
 			<a class="text" href="/Orders/{{ $order->id }}"> 
 
-	    		{{ $order->name }}
+	    		{{ $order->customer_name }}
 	    	</a>
-
-	    	<span>
-
-	    		{{ $order->price }}
-	    	</span>
 		</li>    	
     @endforeach
 	

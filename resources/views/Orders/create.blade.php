@@ -7,13 +7,13 @@
 	<h2>Create new order</h2>
 	<hr>
 
-	<form method="POST" action="/Orders">
+	<form method="POST" action="/orders">
 		
 			@csrf
 
 		<div class="input-group">
 		  <span class="input-group-addon" >Name</span>
-		  <input type="text" name="name" class="form-control" placeholder="eg: Arabic Coffee" >
+		  <input type="text" name="customer_name" class="form-control" placeholder="John doe" >
 		</div>
 
 		<br>
