@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orders extends Model
 {
-	protected $fillable = ['name','total_price','description'];
+	protected $guarded = [];
 
 	public function order_lines()
 	{

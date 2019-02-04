@@ -31,7 +31,7 @@
 
 		<div class="input-group">
 		  <span class="input-group-addon" >Quantity</span>
-		  <input type="number" name="qtt" class="form-control" >
+		  <input type="number" name="qty" class="form-control" >
 		</div>
 
 		<br>
@@ -39,6 +39,13 @@
 		<div class="input-group">
 			<span class="input-group-addon" >Note</span>
 			<textarea name="note" class="form-control"></textarea>
+		</div>
+		
+		<br>
+
+		<div class="input-group">
+				<span class="input-group-addon" >Is it paid?</span>
+			<input  class="form-control" type="checkbox" name="paid">
 		</div>
 		
 		<br>

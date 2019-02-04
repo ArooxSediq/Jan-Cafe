@@ -42,16 +42,39 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-         Orders::create([
+        $item = Items::findOrFail( request('item_id') );
+        
+        $qty = request('qty');
+        $customer_name = request('customer_name');
 
-            "customer_name" => request('customer_name'),
-            "total_price" => request('total_price'),
-            "description" => request('note'),
+        $total = $item->price * $qty;
+       
+         
+        if(request('paid') == null) $paid=0;
+        else $paid = request('paid');
 
+        $first = Order_line::orderBy('id', 'desc')->first();
+        
+        if($first == null)  $order_line = 1;
+        else $order_line = $first->id + 1 ;
 
+        Orders::create([
+            "customer_name" => $customer_name,
+            "total_price" => $total,
+            "order_lines_id" => $order_line,
+            "paid" => $paid
          ]);
-         $qtt = request('qtt');
-         $order_lines_id;
+
+        $order_id = Orders::orderBy('id', 'desc')->first()->id;
+
+       Order_line::create([
+            'id' => $order_line,
+            'order_id' => $order_id,
+            'item_id' => $$item->id,
+            'price' => $total
+        ]);
+
+        
 
          return;
     }
