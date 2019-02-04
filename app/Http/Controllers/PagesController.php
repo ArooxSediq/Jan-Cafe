@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Item;
+use App\Order_Line;
 use App\Order;
 
 class PagesController extends Controller
@@ -13,7 +14,7 @@ class PagesController extends Controller
     {
         $Order = Order::all();
         $Item  = Item::all();
-    	
+
         return view('welcome')->with([
             'items' => $Item,
             'orders' => $Order

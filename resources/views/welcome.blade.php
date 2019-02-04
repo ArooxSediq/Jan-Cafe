@@ -1,12 +1,18 @@
-@extends('layout')
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jan-Cafe TV</title>
 
-
-@section('title','JanCafe')
-
-@section('content')
+    <link 
+        rel="stylesheet" 
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" 
+        crossorigin="anonymous">
+</head>
+<body>
 
 <div class="container-fluid">
-	
+    
 <div class="row">
         <div class="col-6 text-center">
             <br>
@@ -14,16 +20,15 @@
             
         </div>
         <div class="col-6">
-            <dir class="row">
 
                 <dir class="row text-center" id="menu_list">
                     <div class="col-12">
                         <h2 class="text-info">Menu</h2>
                         <hr>
                         <ul class="list-group">
-                        	@foreach($items as $item)
-                        		<li class="list-group-item">{{ $item->name }} | {{$item->price}}</li>
-                        	@endforeach
+                            @foreach($items as $item)
+                                <li class="list-group-item">{{ $item->name }} | {{$item->price}}</li>
+                            @endforeach
                         </ul>
                     </div>
                 </dir>
@@ -32,34 +37,32 @@
                     <div class="col-12 text-center" >
                         <h2 class="text-info">Orders</h2>
                         <hr>
-                        <ul class="list-group hover">
-                        	@foreach($orders as $order)
-                        		@if($order->status == 'pending')
-                        			<li 
-                        			class="progress-bar-striped bg-info text-white">
-                        				{{ $order->customer_name }} | {{ $order->Order_line->item_id }}
-                        			</li>
-                        		@else
-                        			<li 
-                        			class="progress-bar-striped progress-bar-animated bg-success text-white">
-                        				{{$order->customer_name}}
-                        			</li>
-                        		@endif
-                        	@endforeach
-{{--                           <li class="progress-bar-striped progress-bar-animated bg-success text-white">Aroox Sediq | Black Coffee</li>
-                          <li class="progress-bar-striped bg-info text-white">Mohammed | Espresso </li>
-                          <li class="progress-bar-striped bg-info text-white">Brusk | Arabic Coffee</li>
-                          <li class="progress-bar-striped bg-info text-white">Rawa | Hot Chocolate</li>
-                          <li class="progress-bar-striped bg-dark text-muted">Srood | Arabic Coffee</li> --}}
+                        
+                           <ul class="list-group hover">
+                            @foreach($orders as $order)
+                                @if($order->status == 'pending')
+                                    <li 
+                                    class="progress-bar-striped bg-info text-white">
+                                       {{ $order->id }} | {{ $order->customer_name }} 
+
+                                    </li>
+                                @else
+                                    <li 
+                                    class="progress-bar-striped progress-bar-animated bg-success text-white">
+                                        {{ $order->id }} | {{$order->customer_name}}
+                                    </li>
+                                @endif
+                            @endforeach
+
                         </ul>
                     </div>
                 </dir>
 
-    
 
-            </dir>
         </div>
 </div>
 </div>
 
-@endsection
+
+</body>
+</html>
