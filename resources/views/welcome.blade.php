@@ -14,10 +14,12 @@
 <div class="container-fluid">
     
 <div class="row">
-        <div class="col-6 text-center">
+        <div class="col-5 text-center">
             <br>
             <h2 class="text-info">Meta Solutions</h2>
-            
+            <hr>
+            <h4>Advertisments</h4>
+            <img src="storage/img/logo-meta" width="50%">
         </div>
         <div class="col-6">
 
